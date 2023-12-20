@@ -1,4 +1,4 @@
-**Digital World**
+**Digital Sleep**
 
 *by Питхон разрабы*
 
@@ -10,6 +10,6 @@
 
 - Аналитик: <a href = "https://drive.google.com/drive/folders/1xvfWfc6kQvU9VIbvqVeVQuRQ9ogQjKwj"> Папка с аналитикой        
 - Тимлид: <a href = "https://pityhondevelopers.yougile.com/team/2a23bd4511dc/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82/%D0%9C%D0%BE%D1%8F-%D0%B4%D0%BE%D1%81%D0%BA%D0%B0?lang=ru"> Доска YouGile
-- Гейм-дизайнер: <a href = "https://vk.com/doc234294711_671053552?hash=yor9ENY8R9M0z7GCubzaLznZ2F3PhxNMU1V2xpwWQZD&dl=zfcgC8TF07E9HWMhJv3ZCcjx7WRWNZ65N5TJ4flz0Zz"> Итоговый вариант сюжета
+- Гейм-дизайнер: <a href = "https://vk.com/doc234294711_671053552?hash=yor9ENY8R9M0z7GCubzaLznZ2F3PhxNMU1V2xpwWQZD&dl=zfcgC8TF07E9HWMhJv3ZCcjx7WRWNZ65N5TJ4flz0Zz"> Папка с наработками
 - Дизайнер: <a href = "https://www.figma.com/file/ousSj9Z3ZrfJqn6HWC0W0C/%D0%BE%D0%BF%D0%B4?type=whiteboard&node-id=0-1&t=hkHMXndrkAtZ7b8p-0"> Доска Figma
   
