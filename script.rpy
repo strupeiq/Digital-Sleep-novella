@@ -1,4 +1,4 @@
-# Определение персонажей игры.
+﻿# Определение персонажей игры.
 define mainCharacter = Character('Миша', color = '#6F47D7')
 define dima = Character('Дима', color = '#6F47D7')
 define mother = Character('Мама', color = '#6F47D7')
@@ -14,6 +14,9 @@ define audio.default = "music/default music.mp3"
 define audio.classic = "music/classic music.mp3"
 define audio.happy = "music/happy music.mp3"
 define audio.sad = "music/sad music.mp3"
+define audio.fight1 = "music/dinamicfight.mp3"
+define audio.fight2 = "music/agrofight.mp3"
+define audio.elpeace = "music/electropeace.mp3"
 define audio.bags = "sounds/bag sounds.mp3"
 define audio.cooking = "sounds/cooking sound.mp3"
 define audio.door = "sounds/door sound.mp3"
@@ -158,7 +161,7 @@ label start:
 
     "Мама смерила меня недовольным взглядом, явно неудовлетворенная сухим ответом, и принялась накрывать на стол."
 
-    hide mother with moveoutleft
+    hide mom with moveoutleft
     play sound cooking volume 0.5
 
     "Я знал, что она хотела поговорить о моем будущем."
@@ -190,12 +193,15 @@ label start:
 
     "Я пробубнил себе под нос, боясь поднять взгляд на разъяренных родителей. Врать уже не было смысла."
 
+    hide mom
+    show mom talk at leftPosition
+
     mother "Не знаешь?!"
 
     stop music fadeout 0.5
     play sound knock
 
-    hide mom with dissolve
+    hide mom talk with dissolve
     show mom at centre
 
     play music talk
@@ -205,10 +211,9 @@ label start:
     show angry mom at centre
 
     mother "У тебя было столько времени, чтобы определиться! Ты не о том сейчас думаешь! Ходишь по выпускным, шляешься с друзьями... А о будущем кто думать будет? Я, что ли?!"
-    mainCharacter "Мам, не кричи..."
-
     hide angry mom with dissolve
     show mom at leftPosition
+    mainCharacter "Мам, не кричи..."
 
     "Очередной шквал возмущений, словно ком, застрял у мамы в горле, когда отец перебил ее, вновь обращаясь ко мне."
 
@@ -216,16 +221,19 @@ label start:
 
     father "Пора бы уже выбирать. Сколько можно тянуть? Ладно уж, если так нравятся тебе твои компьютеры и игрушки, займись этим. Там много ума не надо: сидишь дома, а тебе деньги платят."
 
+    hide angry dad
     show dad at rightPosition
 
     "{i}Я понял, что они не воспринимают мои интересы всерьез.{/i}"
 
     mainCharacter "Нет же! Если бы все было так просто..."
 
+    hide mom
     show angry mom at leftPosition
 
     mother "Ну и что сложного в твоем программировании?"
 
+    hide angry mom
     show mom at leftPosition
 
     "Родители пристально смотрели на меня, ожидая ответа."
@@ -276,6 +284,8 @@ label start:
 
     "Не успел я пошевелиться, как загрузка уже была завершена, экран погас и все погрузилось во мрак."
 
+    stop music fadeout 0.5
+    play music elpeace
     scene bg digital world
     with fade
 
@@ -351,7 +361,7 @@ label start:
     "Как мой новый знакомый и попросил, я проследовал за ним."
 
     stop music
-    play music classic
+    play music fight1
 
     scene bg fortress
     with fade
@@ -610,7 +620,7 @@ label start:
                 show pythonn happy at centre
                 "Его шанс..."
 
-            "Мне кажется, я уже решил, за кем хочу следовать" if q[6]:
+            "Думаю, я уже решил, за кем хочу следовать" if q[6]:
                 hide pythonn happy
                 show pythonn fun talk at centre
                 pythonn "О, правда? И кто же это?"
@@ -680,6 +690,9 @@ label pythonEnding:
 
             show pythonn closed eyes hand with dissolve
             hide pythonn closed eyes hand
+
+            stop music
+            play music fight1
             show bg fortress
             with fade
 
@@ -691,9 +704,6 @@ label pythonEnding:
             pythonn "Это может занять некоторое время, поэтому будь готов. Ясно?"
             "Я кивнул."
             mainCharacter "Все ясно."
-
-            stop music
-            play music classic
 
             play sound keyboard
             "Уже через мгновение мы приступили к работе. Все происходило так, как описал Python: стоило мне лишь дотронуться до участка кода, как он лишался всяких дефектов."
@@ -734,7 +744,7 @@ label pythonEnding:
             hide pythonn normal
 
             stop music fadeout 0.8
-            play music sad
+            play music fight2
 
             show bg digital world
             with fade
@@ -802,6 +812,8 @@ label cEnding:
     mainCharacter "Я хочу сражаться на стороне Си."
     "Python одобрительно кивнул и попросил следовать за ним."
 
+    stop music fadeout 0.5
+    play music fight1
     hide pythonn fun talk
     show bg fortress
     with fade
@@ -849,7 +861,7 @@ label cEnding:
 
             hide ci with dissolve
             stop music fadeout 0.5
-            play music sad
+            play music fight2
             show bg tunnel with fade
 
             "Я подключился к компьютеру и увидел на экране туннель, который вел к крепости YoptaScript."
@@ -868,7 +880,7 @@ label cEnding:
 
             show bg fortress
             stop music
-            play music default
+            play music peace
             show ci ha at centre with dissolve
 
             "Я открыл глаза и осознал, что нахожусь в крепости Си. Она стояла надо мной и улыбалась."
@@ -956,6 +968,8 @@ label swiftEnding:
     pythonn "О, тебя заинтересовал этот новичок? Что ж, тогда мне придется вас познакомить. Кажется, я видел его в командном центре, когда мы уходили."
     pythonn "Пошли за мной."
 
+    stop music fadeout 0.5
+    play music fight1
     hide pythonn hand with dissolve
     show bg fortress
     with fade
@@ -1004,8 +1018,8 @@ label swiftEnding:
             $ choosedLanguage = "Swift"
 
             swift "Правда?! Отлично! Тогда мы можем приступить прямо сейчас. Дай мне секунду."
-            hide swiftt ha open
-            hide pythonn happy
+            hide swiftt ha open with dissolve
+            hide pythonn happy 
             show pythonn happy at centre
             play sound keyboard
             "Я наблюдал за тем, как Swift нажимает странные комбинации клавиш на клавиатуре у ближайшего к нам монитора, и все еще не понимал, что именно от меня требуется."
@@ -1056,7 +1070,7 @@ label swiftEnding:
             "Языки отошли на несколько шагов назад, чтобы не мешать мне."
 
             stop music
-            play music classic
+            play music elpeace
             show bg codedef
 
             "Я взглянул на множество строк кода передо мной и прикоснулся к одной из них."
@@ -1072,7 +1086,7 @@ label swiftEnding:
             "Прошло еще некоторое время, пока Swift что-то исправлял, а затем я резко потерял соединение с главным компьютером."
 
             stop music
-            play music peace
+            play music fight1
             show bg fortress
             with fade
             show swiftt ha open at rightPosition with dissolve
@@ -1211,7 +1225,7 @@ label javaEnding:
             hide pythonn happy
             show bg storagepc
             stop music
-            play music classic
+            play music fight1
 
             "Java усадила меня за компьютер, который стоял в самом углу между многочисленных стеллажей."
             java "Итак, все предельно просто. Сейчас я запущу программу, которая соберет с нашего мира всю информацию, в которой хоть как-то фигирирует YoptaScript."
@@ -1272,7 +1286,7 @@ label javaEnding:
                     show javaa at centre
 
                     stop music fadeout 1
-                    play music default
+                    play music elpeace
                     hide javaa moveoutright
                     show bg fortress
                     show ci at rightPosition
@@ -1381,7 +1395,7 @@ label javaScriptEnding:
     pythonn "Слышал, он сейчас занимается разработкой какого-то веб-приложения... Думаю, он будет рад нас видеть. Пойдем за мной."
 
     stop music fadeout 1.0
-    play music peace
+    play music elpeace
     hide pythonn fun talk
     show bg scriptroom
     with fade
@@ -1453,6 +1467,8 @@ label javaScriptEnding:
             mainCharacter "Слушай, а ты ведь говорил что-то о \"кое-чем, что ты хотел бы добавить в свое приложение\". Что это?"
             js "А, ты все еще помнишь об этом. Придется раскрыть карты. Подойди сюда."
 
+            stop music fadeout 0.5
+            play music peace
             show bg comments
             with fade
 
